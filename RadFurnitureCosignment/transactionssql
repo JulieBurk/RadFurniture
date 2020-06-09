@@ -1,0 +1,40 @@
+
+CREATE TABLE transactions (
+    t_id NUMBER(10) PRIMARY KEY,
+    i_id NUMBER(10) FOREIGN KEY,
+    seller  u_id NUMBER(10), FOREIGN KEY
+    buyer u_id NUMBER(10), FOREIGN KEY
+    price NUMBER(10), FOREIGN KEY
+);
+
+INSERT INTO transactions VALUES (id_maker.nextval, 'chair', 'blue', 50);
+INSERT INTO transactions VALUES (id_maker.nextval, 'table', 'black',100);
+
+SELECT * FROM transactions;
+
+SELECT * FROM transactions WHERE type = 'chair' AND style = 'blue';
+
+commit;
+
+SELECT * FROM transactions WHERE style = 'style';
+SELECT * FROM transactions WHERE style = 'style2';
+
+SELECT * FROM transactions WHERE style = 'style' UNION
+SELECT * FROM transactions WHERE style = 'style2';
+
+SELECT * FROM transactions WHERE type = '' UNION
+SELECT * FROM transactions;
+
+SELECT * FROM transactions WHERE type = '' UNION
+SELECT * FROM transactions MINUS
+SELECT * FROM transactions WHERE type = 'chair' AND style = 'style';
+
+
+CREATE OR REPLACE PROCEDURE addUser(type VARCHAR2, style VARCHAR2, price NUMBER)
+IS
+BEGIN
+
+    INSERT INTO transactions VALUES (id_maker.nextval, type, style, price);
+
+END;
+

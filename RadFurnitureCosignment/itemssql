@@ -1,0 +1,39 @@
+
+CREATE TABLE items (
+    i_id NUMBER(10) PRIMARY KEY,
+    type VARCHAR2(50) UNIQUE NOT NULL,
+    style VARCHAR2(50),
+    price NUMBER(10),
+);
+
+INSERT INTO items VALUES (id_maker.nextval, 'chair', 'blue', 50);
+INSERT INTO items VALUES (id_maker.nextval, 'table', 'black',100);
+
+SELECT * FROM items;
+
+SELECT * FROM items WHERE type = 'chair' AND style = 'blue';
+
+commit;
+
+SELECT * FROM items WHERE style = 'style';
+SELECT * FROM items WHERE style = 'style2';
+
+SELECT * FROM items WHERE style = 'style' UNION
+SELECT * FROM items WHERE style = 'style2';
+
+SELECT * FROM items WHERE type = '' UNION
+SELECT * FROM items;
+
+SELECT * FROM items WHERE type = '' UNION
+SELECT * FROM items MINUS
+SELECT * FROM items WHERE type = 'chair' AND style = 'style';
+
+
+CREATE OR REPLACE PROCEDURE addUser(type VARCHAR2, style VARCHAR2, price NUMBER)
+IS
+BEGIN
+
+    INSERT INTO items VALUES (id_maker.nextval, type, style, price);
+
+END;
+

@@ -1,2 +1,2 @@
 # RadFurniture
-CRUD app jusing JDBC
+CRUD app using JDBC
